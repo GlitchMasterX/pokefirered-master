@@ -335,7 +335,9 @@
       "dest_warp_id": "0"
     }
   ],
-  "coord_events": [],
+  "coord_events": [
+
+  ],
   "bg_events": [
     {
       "type": "sign",
@@ -371,7 +373,7 @@
     },
     {
       "type": "sign",
-      "x": 35,
+      "x": 36,
       "y": 10,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
@@ -387,7 +389,7 @@
     },
     {
       "type": "sign",
-      "x": 41,
+      "x": 42,
       "y": 10,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",

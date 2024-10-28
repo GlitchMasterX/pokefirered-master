@@ -37,6 +37,7 @@ extern const struct CompressedSpriteSheet gTrainerFrontPicTable[];
 #define FIELD_EFFECT_COUNT 32
 
 EWRAM_DATA u32 gFieldEffectArguments[8] = {0};
+EWRAM_DATA u16 gReflectionPaletteBuffer[0x10] = {0};
 
 static u8 sFieldEffectActiveList[FIELD_EFFECT_COUNT];
 
@@ -54,7 +55,7 @@ static void FieldEffectScript_LoadFadedPal(const u8 **script);
 static void FieldEffectScript_LoadPal(const u8 **script);
 static void FieldEffectScript_CallNative(const u8 **script, u32 *result);
 static void FieldEffectFreeTilesIfUnused(u16 tilesTag);
-static void FieldEffectFreePaletteIfUnused(u8 paletteNum);
+//static void FieldEffectFreePaletteIfUnused(u8 paletteNum);//Dynamic Overworld Pals
 static void Task_PokecenterHeal(u8 taskId);
 static void SpriteCB_PokeballGlow(struct Sprite *sprite);
 static void SpriteCB_PokecenterMonitor(struct Sprite *sprite);
@@ -464,7 +465,8 @@ static void FieldEffectScript_LoadFadedPal(const u8 **script)
     LoadSpritePalette(spritePalette);
     if (idx == 0xFF)
         ApplyGlobalFieldPaletteTint(IndexOfSpritePaletteTag(spritePalette->tag));
-    UpdateSpritePaletteWithWeather(IndexOfSpritePaletteTag(spritePalette->tag));
+    //UpdateSpritePaletteWithWeather(IndexOfSpritePaletteTag(spritePalette->tag));
+    UpdatePaletteGammaType(IndexOfSpritePaletteTag(spritePalette->tag), GAMMA_NORMAL); //Dynamic Overworld Pals
     *script += sizeof(u32);
 }
 
@@ -514,7 +516,7 @@ static void FieldEffectFreeTilesIfUnused(u16 tileStart)
     FreeSpriteTilesByTag(tileTag);
 }
 
-static void FieldEffectFreePaletteIfUnused(u8 paletteNum)
+void FieldEffectFreePaletteIfUnused(u8 paletteNum)
 {
     u8 i;
     u16 paletteTag = GetSpritePaletteTagByPaletteNum(paletteNum);
@@ -2711,7 +2713,7 @@ static void ShowMonEffect_Outdoors_6(struct Task *task)
 static void ShowMonEffect_Outdoors_7(struct Task *task)
 {
     IntrCallback callback;
-    LoadWordFromTwoHalfwords((u16 *)&task->data[13], (u32 *)&callback);
+    LoadWordFromTwoHalfwords((u16 *)&task->data[13], (uintptr_t *)&callback);
     SetVBlankCallback(callback);
     ChangeBgX(0, 0, 0);
     ChangeBgY(0, 0, 0);
@@ -2725,7 +2727,7 @@ static void VBlankCB_ShowMonEffect_Outdoors(void)
 {
     IntrCallback callback;
     struct Task *task = &gTasks[FindTaskIdByFunc(Task_ShowMon_Outdoors)];
-    LoadWordFromTwoHalfwords((u16 *)&task->data[13], (u32 *)&callback);
+    LoadWordFromTwoHalfwords((u16 *)&task->data[13], (uintptr_t *)&callback);
     callback();
     SetGpuReg(REG_OFFSET_WIN0H, task->data[1]);
     SetGpuReg(REG_OFFSET_WIN0V, task->data[2]);
@@ -2830,7 +2832,7 @@ static void ShowMonEffect_Indoors_7(struct Task *task)
     u16 charbase;
     charbase = (GetGpuReg(REG_OFFSET_BG0CNT) >> 8) << 11;
     CpuFill32(0, (void *)VRAM + charbase, 0x800);
-    LoadWordFromTwoHalfwords((u16 *)&task->data[13], (u32 *)&intrCallback);
+    LoadWordFromTwoHalfwords((u16 *)&task->data[13], (uintptr_t *)&intrCallback);
     SetVBlankCallback(intrCallback);
     ChangeBgX(0, 0, 0);
     ChangeBgY(0, 0, 0);
@@ -2845,7 +2847,7 @@ static void VBlankCB_ShowMonEffect_Indoors(void)
     IntrCallback intrCallback;
     struct Task *task;
     task = &gTasks[FindTaskIdByFunc(Task_ShowMon_Indoors)];
-    LoadWordFromTwoHalfwords((u16 *)&task->data[13], (u32 *)&intrCallback);
+    LoadWordFromTwoHalfwords((u16 *)&task->data[13], (uintptr_t *)&intrCallback);
     intrCallback();
     SetGpuReg(REG_OFFSET_BG0HOFS, task->data[1]);
     SetGpuReg(REG_OFFSET_BG0VOFS, task->data[2]);
@@ -3140,8 +3142,15 @@ static void SpriteCB_NPCFlyOut(struct Sprite *sprite);
 
 u8 FldEff_NpcFlyOut(void)
 {
-    u8 spriteId = CreateSprite(gFieldEffectObjectTemplatePointers[FLDEFFOBJ_BIRD], 0x78, 0, 1);
-    struct Sprite *sprite = &gSprites[spriteId];
+    //u8 spriteId = CreateSprite(gFieldEffectObjectTemplatePointers[FLDEFFOBJ_BIRD], 0x78, 0, 1);
+    //struct Sprite *sprite = &gSprites[spriteId];
+    //Dynamic Overworld Pals 
+    u8 spriteId;
+    struct Sprite *sprite;
+
+    LoadFieldEffectPalette(FLDEFFOBJ_BIRD);
+    spriteId = CreateSprite(gFieldEffectObjectTemplatePointers[FLDEFFOBJ_BIRD], 0x78, 0, 1);
+    sprite = &gSprites[spriteId];
 
     sprite->oam.paletteNum = 0;
     sprite->oam.priority = 1;
@@ -3339,6 +3348,8 @@ static u8 CreateFlyBirdSprite(void)
 {
     u8 spriteId;
     struct Sprite *sprite;
+
+    LoadFieldEffectPalette(FLDEFFOBJ_BIRD); //Dynamic Overworld Pals
     spriteId = CreateSprite(gFieldEffectObjectTemplatePointers[FLDEFFOBJ_BIRD], 255, 180, 1);
     sprite = &gSprites[spriteId];
     sprite->oam.paletteNum = 0;

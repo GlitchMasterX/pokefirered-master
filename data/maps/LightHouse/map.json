@@ -1,0 +1,189 @@
+{
+  "id": "MAP_LIGHT_HOUSE",
+  "name": "LightHouse",
+  "layout": "LAYOUT_LIGHT_HOUSE",
+  "music": "MUS_DUMMY",
+  "region_map_section": "MAPSEC_LITTLEROOT_TOWN",
+  "requires_flash": false,
+  "weather": "WEATHER_NONE",
+  "map_type": "MAP_TYPE_NONE",
+  "allow_cycling": false,
+  "allow_escaping": true,
+  "allow_running": true,
+  "show_map_name": false,
+  "floor_number": 0,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": 0,
+  "object_events": [
+
+  ],
+  "warp_events": [
+    {
+      "x": 18,
+      "y": 22,
+      "elevation": 0,
+      "dest_map": "MAP_OLIVINE_CITY",
+      "dest_warp_id": "7"
+    },
+    {
+      "x": 10,
+      "y": 16,
+      "elevation": 0,
+      "dest_map": "MAP_LIGHT_HOUSE",
+      "dest_warp_id": "2"
+    },
+    {
+      "x": 37,
+      "y": 15,
+      "elevation": 0,
+      "dest_map": "MAP_LIGHT_HOUSE",
+      "dest_warp_id": "1"
+    },
+    {
+      "x": 39,
+      "y": 9,
+      "elevation": 0,
+      "dest_map": "MAP_LIGHT_HOUSE",
+      "dest_warp_id": "4"
+    },
+    {
+      "x": 66,
+      "y": 9,
+      "elevation": 0,
+      "dest_map": "MAP_LIGHT_HOUSE",
+      "dest_warp_id": "3"
+    },
+    {
+      "x": 74,
+      "y": 9,
+      "elevation": 0,
+      "dest_map": "MAP_LIGHT_HOUSE",
+      "dest_warp_id": "6"
+    },
+    {
+      "x": 101,
+      "y": 9,
+      "elevation": 0,
+      "dest_map": "MAP_LIGHT_HOUSE",
+      "dest_warp_id": "5"
+    },
+    {
+      "x": 91,
+      "y": 11,
+      "elevation": 0,
+      "dest_map": "MAP_LIGHT_HOUSE",
+      "dest_warp_id": "8"
+    },
+    {
+      "x": 118,
+      "y": 11,
+      "elevation": 0,
+      "dest_map": "MAP_LIGHT_HOUSE",
+      "dest_warp_id": "7"
+    },
+    {
+      "x": 96,
+      "y": 9,
+      "elevation": 0,
+      "dest_map": "MAP_LIGHT_HOUSE",
+      "dest_warp_id": "11"
+    },
+    {
+      "x": 97,
+      "y": 9,
+      "elevation": 0,
+      "dest_map": "MAP_LIGHT_HOUSE",
+      "dest_warp_id": "12"
+    },
+    {
+      "x": 69,
+      "y": 8,
+      "elevation": 0,
+      "dest_map": "MAP_LIGHT_HOUSE",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 70,
+      "y": 8,
+      "elevation": 0,
+      "dest_map": "MAP_LIGHT_HOUSE",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 70,
+      "y": 11,
+      "elevation": 0,
+      "dest_map": "MAP_LIGHT_HOUSE",
+      "dest_warp_id": "14"
+    },
+    {
+      "x": 97,
+      "y": 11,
+      "elevation": 0,
+      "dest_map": "MAP_LIGHT_HOUSE",
+      "dest_warp_id": "13"
+    },
+    {
+      "x": 97,
+      "y": 13,
+      "elevation": 0,
+      "dest_map": "MAP_LIGHT_HOUSE",
+      "dest_warp_id": "16"
+    },
+    {
+      "x": 124,
+      "y": 14,
+      "elevation": 0,
+      "dest_map": "MAP_LIGHT_HOUSE",
+      "dest_warp_id": "15"
+    },
+    {
+      "x": 124,
+      "y": 19,
+      "elevation": 0,
+      "dest_map": "MAP_LIGHT_HOUSE",
+      "dest_warp_id": "18"
+    },
+    {
+      "x": 151,
+      "y": 19,
+      "elevation": 0,
+      "dest_map": "MAP_LIGHT_HOUSE",
+      "dest_warp_id": "17"
+    },
+    {
+      "x": 159,
+      "y": 10,
+      "elevation": 0,
+      "dest_map": "MAP_LIGHT_HOUSE",
+      "dest_warp_id": "22"
+    },
+    {
+      "x": 158,
+      "y": 10,
+      "elevation": 0,
+      "dest_map": "MAP_LIGHT_HOUSE",
+      "dest_warp_id": "21"
+    },
+    {
+      "x": 104,
+      "y": 10,
+      "elevation": 0,
+      "dest_map": "MAP_LIGHT_HOUSE",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 105,
+      "y": 10,
+      "elevation": 0,
+      "dest_map": "MAP_LIGHT_HOUSE",
+      "dest_warp_id": "0"
+    }
+  ],
+  "coord_events": [
+
+  ],
+  "bg_events": [
+
+  ]
+}

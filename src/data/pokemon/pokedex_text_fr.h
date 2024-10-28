@@ -2718,3 +2718,45 @@ const u8 gDeoxysPokedexText[] = _(
     "altering its appearance.");
 
 const u8 gDeoxysPokedexTextUnused[] = _("");
+
+const u8 gRyujinPokedexText[] = _(
+    "No information about it.");
+
+const u8 gRyujinPokedexTextUnused[] = _("");
+
+const u8 gMoltres_oPokedexText[] = _(
+    "No information about it.");
+
+const u8 gMoltres_oPokedexTextUnused[] = _("");
+
+const u8 gZapdos_oPokedexText[] = _(
+    "No information about it.");
+
+const u8 gZapdos_oPokedexTextUnused[] = _("");
+
+const u8 gArticuno_oPokedexText[] = _(
+    "No information about it.");
+
+const u8 gArticuno_oPokedexTextUnused[] = _("");
+
+const u8 gWeavilePokedexText[] = _(
+    "It lives in snowy regions.\n" 
+    "It carves patterns in trees\n"
+     "with its claws as a\n"
+      "signal to others..");
+
+const u8 gWeavilePokedexTextUnused[] = _("");
+
+const u8 gTogekissPokedexText[] = _(
+    "It grows dispirited if it is not with kind\n"
+    "people. It can float in midair without\n"
+    "moving its wings.");
+
+const u8 gTogekissPokedexTextUnused[] = _("");
+
+const u8 gHonchkrowPokedexText[] = _(
+    "It is said that when chased, it lures its\n"
+    "attacker onto dark mountain trails where\n"
+    "the foe will get lost.");
+
+const u8 gHonchkrowPokedexTextUnused[] = _("");

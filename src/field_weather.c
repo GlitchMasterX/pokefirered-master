@@ -13,13 +13,14 @@
 
 #define DROUGHT_COLOR_INDEX(color) ((((color) >> 1) & 0xF) | (((color) >> 2) & 0xF0) | (((color) >> 3) & 0xF00))
 
-enum
+//Dynamic Overworld Pals
+/*enum
 {
     GAMMA_NONE,
     GAMMA_NORMAL,
     GAMMA_ALT,
 };
-
+*/
 struct RGBColor
 {
     u16 r:5;
@@ -90,7 +91,9 @@ static void (*const sWeatherPalStateFuncs[])(void) = {
     DoNothing
 };
 
-static const u8 sBasePaletteGammaTypes[32] = {
+//static const u8 sBasePaletteGammaTypes[32] = {
+//Dynamic Overworld Pals
+EWRAM_DATA u8 sBasePaletteGammaTypes[32] = {
     // background palettes
     GAMMA_NORMAL,
     GAMMA_NORMAL,
@@ -145,7 +148,8 @@ void StartWeather(void)
 {
     if (!FuncIsActiveTask(Task_WeatherMain))
     {
-        u8 index = AllocSpritePalette(0x1200);
+        //u8 index = AllocSpritePalette(0x1200);
+        u8 index = 15; //Dynamic Overworld Pals
         CpuCopy32(gDefaultWeatherSpritePalette, &gPlttBufferUnfaded[OBJ_PLTT_ID(index)], PLTT_SIZE_4BPP);
         ApplyGlobalFieldPaletteTint(index);
         BuildGammaShiftTables();
@@ -271,6 +275,11 @@ static void BuildGammaShiftTables(void)
     u16 v11;
     s16 dunno;
 
+    u8 i;
+
+    for (i = 0; i <= 12; i++)
+        sBasePaletteGammaTypes[i] = GAMMA_NORMAL; //Dynamic Overworld Pal
+    
     sPaletteGammaTypes = sBasePaletteGammaTypes;
     for (v0 = 0; v0 <= 1; v0++)
     {
@@ -881,10 +890,13 @@ static u8 IsWeatherFadingIn(void)
         return 0;
 }
 
-void LoadCustomWeatherSpritePalette(const u16 *palette)
+//void LoadCustomWeatherSpritePalette(const u16 *palette) //Dynamic Overworld Pal
+void LoadCustomWeatherSpritePalette(const struct SpritePalette *palette)
 {
-    LoadPalette(palette, OBJ_PLTT_ID(gWeatherPtr->weatherPicSpritePalIndex), PLTT_SIZE_4BPP);
-    UpdateSpritePaletteWithWeather(gWeatherPtr->weatherPicSpritePalIndex);
+    //LoadPalette(palette, OBJ_PLTT_ID(gWeatherPtr->weatherPicSpritePalIndex), PLTT_SIZE_4BPP);
+    //UpdateSpritePaletteWithWeather(gWeatherPtr->weatherPicSpritePalIndex);
+    LoadSpritePalette(palette);
+    UpdateSpritePaletteWithWeather(IndexOfSpritePaletteTag(palette->tag));
 }
 
 static void LoadDroughtWeatherPalette(u8 *gammaIndexPtr, u8 *a1)
@@ -1144,4 +1156,11 @@ void SlightlyDarkenPalsInWeather(u16 *palbuf, u16 *unused, u32 size)
         BlendPalettesAt(palbuf, RGB_BLACK, 3, size);
         break;
     }
+}
+
+//Dynamic Overworld Pal
+void UpdatePaletteGammaType(u8 index, u8 gammaType)
+{
+    if (index != 0xFF)
+        sBasePaletteGammaTypes[index + 16] = gammaType;
 }

@@ -1,0 +1,104 @@
+{
+  "id": "MAP_ROUTE43",
+  "name": "Route43",
+  "layout": "LAYOUT_ROUTE43",
+  "music": "MUS_DUMMY",
+  "region_map_section": "MAPSEC_LITTLEROOT_TOWN",
+  "requires_flash": false,
+  "weather": "WEATHER_NONE",
+  "map_type": "MAP_TYPE_NONE",
+  "allow_cycling": true,
+  "allow_escaping": false,
+  "allow_running": true,
+  "show_map_name": true,
+  "floor_number": 0,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": [
+    {
+      "map": "MAP_LAKEOF_RAGE",
+      "offset": -4,
+      "direction": "up"
+    }
+  ],
+  "object_events": [
+
+  ],
+  "warp_events": [
+    {
+      "x": 15,
+      "y": 50,
+      "elevation": 0,
+      "dest_map": "MAP_MAHOGANY",
+      "dest_warp_id": "1"
+    },
+    {
+      "x": 14,
+      "y": 50,
+      "elevation": 0,
+      "dest_map": "MAP_MAHOGANY",
+      "dest_warp_id": "1"
+    },
+    {
+      "x": 13,
+      "y": 50,
+      "elevation": 0,
+      "dest_map": "MAP_MAHOGANY",
+      "dest_warp_id": "1"
+    },
+    {
+      "x": 16,
+      "y": 50,
+      "elevation": 0,
+      "dest_map": "MAP_MAHOGANY",
+      "dest_warp_id": "1"
+    },
+    {
+      "x": 20,
+      "y": 38,
+      "elevation": 0,
+      "dest_map": "MAP_ROUTE431",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 21,
+      "y": 38,
+      "elevation": 0,
+      "dest_map": "MAP_ROUTE431",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 19,
+      "y": 32,
+      "elevation": 0,
+      "dest_map": "MAP_ROUTE431",
+      "dest_warp_id": "1"
+    },
+    {
+      "x": 20,
+      "y": 32,
+      "elevation": 0,
+      "dest_map": "MAP_ROUTE431",
+      "dest_warp_id": "1"
+    },
+    {
+      "x": 21,
+      "y": 32,
+      "elevation": 0,
+      "dest_map": "MAP_ROUTE431",
+      "dest_warp_id": "1"
+    },
+    {
+      "x": 22,
+      "y": 32,
+      "elevation": 0,
+      "dest_map": "MAP_ROUTE431",
+      "dest_warp_id": "1"
+    }
+  ],
+  "coord_events": [
+
+  ],
+  "bg_events": [
+
+  ]
+}

@@ -5030,4 +5030,95 @@ const struct PokedexEntry gPokedexEntries[] =
         .trainerScale = 337,
         .trainerOffset = 2,
     },
+
+     [NATIONAL_DEX_RYUJIN] =
+    {
+        .categoryName = _("DIVING"),
+        .height = 52,
+        .weight = 2160,
+        .description = gRyujinPokedexText,
+        .unusedDescription = gRyujinPokedexTextUnused,
+        .pokemonScale = 283,
+        .pokemonOffset = 0,
+        .trainerScale = 742,
+        .trainerOffset = 18,
+    },
+
+        [NATIONAL_DEX_ARTICUNO_O] =
+    {
+        .categoryName = _("FREEZE"),
+        .height = 17,
+        .weight = 554,
+        .description = gArticuno_oPokedexText,
+        .unusedDescription = gArticuno_oPokedexTextUnused,
+        .pokemonScale = 278,
+        .pokemonOffset = 0,
+        .trainerScale = 308,
+        .trainerOffset = 1,
+    },
+
+    [NATIONAL_DEX_ZAPDOS_O] =
+    {
+        .categoryName = _("ELECTRIC"),
+        .height = 16,
+        .weight = 526,
+        .description = gZapdos_oPokedexText,
+        .unusedDescription = gZapdos_oPokedexTextUnused,
+        .pokemonScale = 275,
+        .pokemonOffset = 1,
+        .trainerScale = 330,
+        .trainerOffset = 3,
+    },
+
+    [NATIONAL_DEX_MOLTRES_O] =
+    {
+        .categoryName = _("FLAME"),
+        .height = 20,
+        .weight = 600,
+        .description = gMoltres_oPokedexText,
+        .unusedDescription = gMoltres_oPokedexTextUnused,
+        .pokemonScale = 270,
+        .pokemonOffset = 1,
+        .trainerScale = 379,
+        .trainerOffset = 6,
+    },
+    
+        [NATIONAL_DEX_TOGEKISS] =
+    {
+       .categoryName = _("HAPPINESS"),
+        .height = 6,
+        .weight = 50,
+        .description = gTogekissPokedexText,
+        .unusedDescription = gTogekissPokedexTextUnused,
+        .pokemonScale = 424,
+        .pokemonOffset = 15,
+        .trainerScale = 256,
+        .trainerOffset = -2,
+    },
+
+    [NATIONAL_DEX_HONCHKROW] =
+    {
+     .categoryName = _("DARKNESS"),
+        .height = 5,
+        .weight = 21,
+        .description = gHonchkrowPokedexText,
+        .unusedDescription = gHonchkrowPokedexTextUnused,
+        .pokemonScale = 401,
+        .pokemonOffset = -8,
+        .trainerScale = 256,
+        .trainerOffset = -2,
+    },
+
+    [NATIONAL_DEX_WEAVILE] =
+    {
+     .categoryName = _("SHARP CLAW"),
+        .height = 9,
+        .weight = 280,
+        .description = gWeavilePokedexText,
+        .unusedDescription = gWeavilePokedexTextUnused,
+        .pokemonScale = 413,
+        .pokemonOffset = -3,
+        .trainerScale = 256,
+        .trainerOffset = -2,
+   },
 };

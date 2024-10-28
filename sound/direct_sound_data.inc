@@ -1855,7 +1855,34 @@ Cry_Deoxys::
 Cry_Chimecho::
 	.incbin "sound/direct_sound_samples/cries/chimecho.bin"
 
+	.align 2
+Cry_Weavile::
+	.incbin "sound/direct_sound_samples/cries/sneasel.bin"
 
+.align 2
+Cry_Ryujin::
+	.incbin "sound/direct_sound_samples/cries/lugia.bin"
+
+.align 2
+Cry_Moltres_o::
+	.incbin "sound/direct_sound_samples/cries/moltres.bin"
+
+	.align 2
+Cry_Articuno_o::
+	.incbin "sound/direct_sound_samples/cries/articuno.bin"
+
+.align 2
+Cry_Zapdos_o::
+	.incbin "sound/direct_sound_samples/cries/zapdos.bin"
+
+.align 2
+Cry_Honchkrow::
+	.incbin "sound/direct_sound_samples/cries/murkrow.bin"
+
+.align 2
+Cry_Togekiss::
+	.incbin "sound/direct_sound_samples/cries/togetic.bin"
+	
 	.align 2
 DirectSoundWaveData_register_noise::
 	.incbin "sound/direct_sound_samples/register_noise.bin"

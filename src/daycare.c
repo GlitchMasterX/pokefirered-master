@@ -94,6 +94,18 @@ static const struct WindowTemplate sDaycareLevelMenuWindowTemplate =
     .baseBlock = 8
 };
 
+static u8 GetLevelFromMonExp(struct Pokemon *mon)
+{
+    u16 species = GetMonData(mon, MON_DATA_SPECIES, NULL);
+    u32 exp = GetMonData(mon, MON_DATA_EXP, NULL);
+    s32 level = 1;
+
+    while (level <= MAX_LEVEL && gExperienceTables[gSpeciesInfo[species].growthRate][level] <= exp)
+        level++;
+
+    return level - 1;
+}
+
 static const struct ListMenuItem sLevelMenuItems[] =
 {
     {gExpandedPlaceholder_Empty, 0},
@@ -516,13 +528,42 @@ static u16 TakeSelectedPokemonFromDaycare(struct DaycareMon *daycareMon)
     BoxMonToMon(&daycareMon->mon, &pokemon);
 
     if (GetMonData(&pokemon, MON_DATA_LEVEL) != MAX_LEVEL)
+{
+    u8 level;
+    u8 i;
+    u8 cap;
+
+    experience = GetMonData(&pokemon, MON_DATA_EXP) + daycareMon->steps;
+    SetMonData(&pokemon, MON_DATA_EXP, &experience);
+    level = GetLevelFromMonExp(&pokemon);
+
+    for (i = 0; i < NUM_SOFT_CAPS; i++)
     {
-        experience = GetMonData(&pokemon, MON_DATA_EXP) + daycareMon->steps;
-        SetMonData(&pokemon, MON_DATA_EXP, &experience);
-        ApplyDaycareExperience(&pokemon);
+        if (i <= 2)
+            cap = sLevelCaps[i] / 2;
+        else
+            cap = sLevelCaps[i];
+
+        if (!FlagGet(sLevelCapFlags[i]) && level >= cap)
+        {
+            u8 levelDiff;
+            u32 newSteps;
+
+            levelDiff = level - cap;
+
+            newSteps = daycareMon->steps / (levelDiff + 1);
+            experience = GetBoxMonData(&daycareMon->mon, MON_DATA_EXP) + newSteps;
+
+            SetMonData(&pokemon, MON_DATA_EXP, &experience);
+            break;
+        }
     }
 
+    ApplyDaycareExperience(&pokemon);
+}
+
     gPlayerParty[PARTY_SIZE - 1] = pokemon;
+    
     if (daycareMon->mail.message.itemId)
     {
         GiveMailToMon2(&gPlayerParty[PARTY_SIZE - 1], &daycareMon->mail.message);
@@ -551,9 +592,38 @@ u16 TakePokemonFromDaycare(void)
 static u8 GetLevelAfterDaycareSteps(struct BoxPokemon *mon, u32 steps)
 {
     struct BoxPokemon tempMon = *mon;
-
     u32 experience = GetBoxMonData(mon, MON_DATA_EXP) + steps;
-    SetBoxMonData(&tempMon, MON_DATA_EXP,  &experience);
+    u8 i;
+    u8 level;
+    u8 cap;
+
+    // set experience now to be able to get levelAfter
+    SetBoxMonData(&tempMon, MON_DATA_EXP, &experience);
+    level = GetLevelFromBoxMonExp(&tempMon);
+
+    // loop through to check caps
+    for (i = 0; i < NUM_SOFT_CAPS; i++)
+    {
+        if (i <= 2)
+            cap = sLevelCaps[i] / 2;
+        else
+            cap = sLevelCaps[i];
+
+        if (!FlagGet(sLevelCapFlags[i]) && level >= cap)
+        {
+            u8 levelDiff;
+            u32 newSteps;
+
+            levelDiff = level - cap;
+
+            newSteps = steps / (levelDiff + 1);
+            experience = GetBoxMonData(mon, MON_DATA_EXP) + newSteps;
+
+            SetBoxMonData(&tempMon, MON_DATA_EXP, &experience);
+            break;
+        }
+    }
+
     return GetLevelFromBoxMonExp(&tempMon);
 }
 

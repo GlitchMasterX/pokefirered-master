@@ -150,6 +150,32 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DeoxysD;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DeoxysA;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DeoxysN;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_SSAnne;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Gold;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Bugsy;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Chuck;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Claire;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Dancegirl;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Eusine;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Falkner;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Janine;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Jasmine;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Karen;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Kris;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Legend;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Morty;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Petrel;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Pryce;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Silver;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Whitney;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Will;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_UnusedMan;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Aquaf;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Aquam;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Rangerm;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Rangerf;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Spy;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Villain;
+
 
 
 const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM_OBJ_EVENT_GFX] = {
@@ -305,4 +331,32 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_DEOXYS_A]                 = &gObjectEventGraphicsInfo_DeoxysA,
     [OBJ_EVENT_GFX_DEOXYS_N]                 = &gObjectEventGraphicsInfo_DeoxysN,
     [OBJ_EVENT_GFX_SS_ANNE]                  = &gObjectEventGraphicsInfo_SSAnne,
+    [OBJ_EVENT_GFX_GOLD]                     = &gObjectEventGraphicsInfo_Gold,
+    [OBJ_EVENT_GFX_BUGSY]                    = &gObjectEventGraphicsInfo_Bugsy,
+    [OBJ_EVENT_GFX_CHUCK]                    = &gObjectEventGraphicsInfo_Chuck,
+    [OBJ_EVENT_GFX_CLAIRE]                  = &gObjectEventGraphicsInfo_Claire,
+    [OBJ_EVENT_GFX_DANCEGIRL]                  = &gObjectEventGraphicsInfo_Dancegirl,
+    [OBJ_EVENT_GFX_EUSINE]                  = &gObjectEventGraphicsInfo_Eusine,
+    [OBJ_EVENT_GFX_FALKNER]                  = &gObjectEventGraphicsInfo_Falkner,
+    [OBJ_EVENT_GFX_JANINE]                  = &gObjectEventGraphicsInfo_Janine,
+    [OBJ_EVENT_GFX_JASMINE]                  = &gObjectEventGraphicsInfo_Jasmine,
+    [OBJ_EVENT_GFX_KAREN]                  = &gObjectEventGraphicsInfo_Karen,
+    [OBJ_EVENT_GFX_KRIS]                  = &gObjectEventGraphicsInfo_Kris,
+    [OBJ_EVENT_GFX_LEGEND]                  = &gObjectEventGraphicsInfo_Legend,
+    [OBJ_EVENT_GFX_MORTY]                  = &gObjectEventGraphicsInfo_Morty,
+    [OBJ_EVENT_GFX_PETREL]                  = &gObjectEventGraphicsInfo_Petrel,
+    [OBJ_EVENT_GFX_PRYCE]                  = &gObjectEventGraphicsInfo_Pryce,
+    [OBJ_EVENT_GFX_SILVER]                  = &gObjectEventGraphicsInfo_Silver,
+    [OBJ_EVENT_GFX_WHITNEY]                  = &gObjectEventGraphicsInfo_Whitney,
+    [OBJ_EVENT_GFX_WILL]                  = &gObjectEventGraphicsInfo_Will,
+    [OBJ_EVENT_GFX_UNUSED_MAN]                  = &gObjectEventGraphicsInfo_UnusedMan,
+    [OBJ_EVENT_GFX_AQUAF]                     = &gObjectEventGraphicsInfo_Aquaf,
+    [OBJ_EVENT_GFX_AQUAM]                     = &gObjectEventGraphicsInfo_Aquam,
+    [OBJ_EVENT_GFX_RANGERM]                     = &gObjectEventGraphicsInfo_Rangerm,
+    [OBJ_EVENT_GFX_RANGERF]                     = &gObjectEventGraphicsInfo_Rangerf,
+    [OBJ_EVENT_GFX_SPY]                     = &gObjectEventGraphicsInfo_Spy,
+    [OBJ_EVENT_GFX_VILLAIN]                     = &gObjectEventGraphicsInfo_Villain,
+
 };
+
+

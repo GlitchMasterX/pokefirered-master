@@ -148,7 +148,8 @@ void SetCurrentAndNextWeather(u8 weather);
 void Weather_SetBlendCoeffs(u8 eva, u8 evb);
 void Weather_SetTargetBlendCoeffs(u8 eva, u8 evb, int delay);
 bool8 Weather_UpdateBlend(void);
-void LoadCustomWeatherSpritePalette(const u16 *palette);
+//void LoadCustomWeatherSpritePalette(const u16 *palette);
+void LoadCustomWeatherSpritePalette(const struct SpritePalette *palette); //Dynamic OverWorld Pals
 void ResetDroughtWeatherPaletteLoading(void);
 bool8 LoadDroughtWeatherPalettes(void);
 void DroughtStateInit(void);
@@ -161,6 +162,7 @@ void StartWeather(void);
 void ResumePausedWeather(void);
 void FadeSelectedPals(u8 mode, s8 delay, u32 selectedPalettes);
 
+extern const u16 gDefaultWeatherSpritePalette[];
 extern const u16 gCloudsWeatherPalette[];
 extern const u16 gSandstormWeatherPalette[];
 extern const u8 gWeatherFogDiagonalTiles[];
@@ -172,5 +174,15 @@ extern const u8 gWeatherBubbleTiles[];
 extern const u8 gWeatherAshTiles[];
 extern const u8 gWeatherRainTiles[];
 extern const u8 gWeatherSandstormTiles[];
+
+//Dynamic OverWorld Pals
+enum
+{
+    GAMMA_NONE,
+    GAMMA_NORMAL,
+    GAMMA_ALT,
+};
+
+void UpdatePaletteGammaType(u8 index, u8 gammaType);
 
 #endif // GUARD_WEATHER_H

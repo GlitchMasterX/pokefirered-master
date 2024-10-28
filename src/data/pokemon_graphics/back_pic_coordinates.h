@@ -2060,6 +2060,7 @@ const struct MonCoords gMonBackPicCoords[] =
         .size = MON_COORDS_SIZE(32, 56),
         .y_offset = 7,
     },
+    [SPECIES_RYUJIN]    = { .size = 0x78, .y_offset =  1 },
     [SPECIES_EGG] =
     {
         .size = MON_COORDS_SIZE(24, 48),
@@ -2200,5 +2201,6 @@ const struct MonCoords gMonBackPicCoords[] =
         .size = MON_COORDS_SIZE(32, 56),
         .y_offset = 6,
     },
+
 };
 

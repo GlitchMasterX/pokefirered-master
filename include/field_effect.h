@@ -5,6 +5,8 @@
 #include "constants/field_effects.h"
 
 extern u32 gFieldEffectArguments[8];
+extern u16 gReflectionPaletteBuffer[];
+
 extern void (*gPostMenuFieldCallback)(void);
 extern bool8 (*gFieldCallback2)(void);
 
@@ -27,5 +29,6 @@ void MultiplyInvertedPaletteRGBComponents(u16 i, u8 r, u8 g, u8 b);
 void SpriteCB_PopOutOfAsh(struct Sprite *sprite);
 void SpriteCB_AshLaunch(struct Sprite *sprite);
 void FieldEffectActiveListClear(void);
+void FieldEffectFreePaletteIfUnused(u8 paletteNum);//Dynamic Overworld Pals
 
 #endif //GUARD_FIELD_EFFECTS_H

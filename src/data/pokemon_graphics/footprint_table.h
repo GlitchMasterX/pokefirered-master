@@ -411,6 +411,13 @@ const u8 *const gMonFootprintTable[] =
     [SPECIES_LATIOS] = gMonFootprint_Latios,
     [SPECIES_JIRACHI] = gMonFootprint_Jirachi,
     [SPECIES_DEOXYS] = gMonFootprint_Deoxys,
+    [SPECIES_RYUJIN]= gMonFootprint_Ryujin,
+    [SPECIES_MOLTRES_O] =gMonFootprint_Moltres_o,
+    [SPECIES_ZAPDOS_O]= gMonFootprint_Zapdos_o,
+    [SPECIES_ARTICUNO_O]= gMonFootprint_Articuno_o,
+    [SPECIES_TOGEKISS]= gMonFootprint_Togekiss,
+    [SPECIES_WEAVILE]= gMonFootprint_Weavile,
+    [SPECIES_HONCHKROW]= gMonFootprint_Honchkrow,
     [SPECIES_CHIMECHO] = gMonFootprint_Chimecho,
     [SPECIES_EGG] = gMonFootprint_Bulbasaur,
 };

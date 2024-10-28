@@ -37,7 +37,7 @@
 #include "constants/battle_move_effects.h"
 #include "constants/union_room.h"
 
-#define SPECIES_TO_HOENN(name)      [SPECIES_##name - 1] = HOENN_DEX_##name
+#define SPECIES_TO_HOENN(name)      [SPECIES_##name + 7] = HOENN_DEX_##name
 #define SPECIES_TO_NATIONAL(name)   [SPECIES_##name - 1] = NATIONAL_DEX_##name
 #define HOENN_TO_NATIONAL(name)     [HOENN_DEX_##name - 1] = NATIONAL_DEX_##name
 
@@ -100,7 +100,7 @@ static const struct CombinedMove sCombinedMoves[2] =
 // To reorder the pokedex, see the values in include/constants/pokedex.h.
 
  // Assigns all species to the Hoenn Dex Index (Summary No. for Hoenn Dex)
-static const u16 sSpeciesToHoennPokedexNum[NUM_SPECIES - 1] =
+static const u16 sSpeciesToHoennPokedexNum[NUM_SPECIES + 7] =
 {
     SPECIES_TO_HOENN(BULBASAUR),
     SPECIES_TO_HOENN(IVYSAUR),
@@ -513,6 +513,14 @@ static const u16 sSpeciesToHoennPokedexNum[NUM_SPECIES - 1] =
     SPECIES_TO_HOENN(JIRACHI),
     SPECIES_TO_HOENN(DEOXYS),
     SPECIES_TO_HOENN(CHIMECHO),
+    SPECIES_TO_HOENN(RYUJIN),
+    SPECIES_TO_HOENN(MOLTRES_O),
+    SPECIES_TO_HOENN(ZAPDOS_O),
+    SPECIES_TO_HOENN(ARTICUNO_O),
+    SPECIES_TO_HOENN(TOGEKISS),
+    SPECIES_TO_HOENN(HONCHKROW),
+    SPECIES_TO_HOENN(WEAVILE),
+
 };
 
  // Assigns all species to the National Dex Index (Summary No. for National Dex)
@@ -929,6 +937,13 @@ static const u16 sSpeciesToNationalPokedexNum[NUM_SPECIES - 1] =
     SPECIES_TO_NATIONAL(JIRACHI),
     SPECIES_TO_NATIONAL(DEOXYS),
     SPECIES_TO_NATIONAL(CHIMECHO),
+    SPECIES_TO_NATIONAL(RYUJIN),
+    SPECIES_TO_NATIONAL(MOLTRES_O),
+    SPECIES_TO_NATIONAL(ZAPDOS_O),
+    SPECIES_TO_NATIONAL(ARTICUNO_O),
+    SPECIES_TO_NATIONAL(TOGEKISS),
+    SPECIES_TO_NATIONAL(HONCHKROW),
+    SPECIES_TO_NATIONAL(WEAVILE),
 };
 
 // Assigns all Hoenn Dex Indexes to a National Dex Index
@@ -1136,6 +1151,13 @@ static const u16 sHoennToNationalOrder[NUM_SPECIES - 1] =
     HOENN_TO_NATIONAL(RAYQUAZA),
     HOENN_TO_NATIONAL(JIRACHI),
     HOENN_TO_NATIONAL(DEOXYS),
+    HOENN_TO_NATIONAL(RYUJIN),
+    HOENN_TO_NATIONAL(MOLTRES_O),
+    HOENN_TO_NATIONAL(ZAPDOS_O),
+    HOENN_TO_NATIONAL(ARTICUNO_O),
+    HOENN_TO_NATIONAL(TOGEKISS),
+    HOENN_TO_NATIONAL(HONCHKROW),
+    HOENN_TO_NATIONAL(WEAVILE),
     HOENN_TO_NATIONAL(BULBASAUR), // Pokémon from here onwards are UNSEEN in the HoennDex.
     HOENN_TO_NATIONAL(IVYSAUR),
     HOENN_TO_NATIONAL(VENUSAUR),
@@ -2447,15 +2469,13 @@ s32 CalculateBaseDamage(struct BattlePokemon *attacker, struct BattlePokemon *de
         spDefense = (110 * spDefense) / 100;
 
     // Apply type-bonus hold item
-    for (i = 0; i < ARRAY_COUNT(sHoldEffectToType); i++)
+ for (i = 0; i < ARRAY_COUNT(sHoldEffectToType); i++)
     {
         if (attackerHoldEffect == sHoldEffectToType[i][0]
             && type == sHoldEffectToType[i][1])
         {
-            if (IS_TYPE_PHYSICAL(type))
-                attack = (attack * (attackerHoldEffectParam + 100)) / 100;
-            else
-                spAttack = (spAttack * (attackerHoldEffectParam + 100)) / 100;
+            attack = (attack * (attackerHoldEffectParam + 100)) / 100;
+            spAttack = (spAttack * (attackerHoldEffectParam + 100)) / 100;
             break;
         }
     }
@@ -2478,7 +2498,7 @@ s32 CalculateBaseDamage(struct BattlePokemon *attacker, struct BattlePokemon *de
     if (attackerHoldEffect == HOLD_EFFECT_THICK_CLUB && (attacker->species == SPECIES_CUBONE || attacker->species == SPECIES_MAROWAK))
         attack *= 2;
     if (defender->ability == ABILITY_THICK_FAT && (type == TYPE_FIRE || type == TYPE_ICE))
-        spAttack /= 2;
+    gBattleMovePower /= 2;
     if (attacker->ability == ABILITY_HUSTLE)
         attack = (150 * attack) / 100;
     if (attacker->ability == ABILITY_PLUS && ABILITY_ON_FIELD2(ABILITY_MINUS))
@@ -2506,7 +2526,7 @@ s32 CalculateBaseDamage(struct BattlePokemon *attacker, struct BattlePokemon *de
     if (gBattleMoves[gCurrentMove].effect == EFFECT_EXPLOSION)
         defense /= 2;
 
-    if (IS_TYPE_PHYSICAL(type))
+    if (IS_MOVE_PHYSICAL(gCurrentMove))
     {
         if (gCritMultiplier == 2)
         {
@@ -2561,7 +2581,7 @@ s32 CalculateBaseDamage(struct BattlePokemon *attacker, struct BattlePokemon *de
     if (type == TYPE_MYSTERY)
         damage = 0; // is ??? type. does 0 damage.
 
-    if (IS_TYPE_SPECIAL(type))
+    if (IS_MOVE_SPECIAL(gCurrentMove))
     {
         if (gCritMultiplier == 2)
         {
@@ -2605,7 +2625,10 @@ s32 CalculateBaseDamage(struct BattlePokemon *attacker, struct BattlePokemon *de
             damage /= 2;
 
         // Are effects of weather negated with cloud nine or air lock
-        if (WEATHER_HAS_EFFECT2)
+      
+    }
+    
+  if (WEATHER_HAS_EFFECT2)
         {
             // Rain weakens Fire, boosts Water
             if (gBattleWeather & B_WEATHER_RAIN_TEMPORARY)
@@ -2637,14 +2660,10 @@ s32 CalculateBaseDamage(struct BattlePokemon *attacker, struct BattlePokemon *de
                     damage /= 2;
                     break;
                 }
-            }
-        }
-
-        // Flash fire triggered
+            }        // Flash fire triggered
         if ((gBattleResources->flags->flags[battlerIdAtk] & RESOURCE_FLAG_FLASH_FIRE) && type == TYPE_FIRE)
             damage = (15 * damage) / 10;
-    }
-
+        }
     return damage + 2;
 }
 

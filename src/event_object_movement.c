@@ -20,6 +20,8 @@
 #include "constants/event_objects.h"
 #include "constants/trainer_types.h"
 #include "constants/union_room.h"
+//Dynamic Overworld Pal
+#include "field_weather.h"
 
 static void MoveCoordsInDirection(u32, s16 *, s16 *, s16, s16);
 static bool8 ObjectEventExecSingleMovementAction(struct ObjectEvent *, struct Sprite *);
@@ -70,7 +72,7 @@ static void UpdateObjectEventVisibility(struct ObjectEvent *, struct Sprite *);
 static void MakeObjectTemplateFromObjectEventTemplate(const struct ObjectEventTemplate *, struct SpriteTemplate *, const struct SubspriteTable **);
 static void GetObjectEventMovingCameraOffset(s16 *, s16 *);
 static const struct ObjectEventTemplate *GetObjectEventTemplateByLocalIdAndMap(u8, u8, u8);
-static void LoadObjectEventPalette(u16);
+//static void LoadObjectEventPalette(u16); //Dynamic Overworld Pals
 static void RemoveObjectEventIfOutsideView(struct ObjectEvent *);
 static void SpawnObjectEventOnReturnToField(u8 objectEventId, s16 x, s16 y);
 static void SetPlayerAvatarObjectEventIdAndObjectId(u8, u8);
@@ -191,23 +193,23 @@ static u8 setup##_callback(struct ObjectEvent *objectEvent, struct Sprite *sprit
     return 0;                                                                                    \
 }
 
-EWRAM_DATA u8 sCurrentReflectionType = 0;
-EWRAM_DATA u16 sCurrentSpecialObjectPaletteTag = 0;
+//EWRAM_DATA u8 sCurrentReflectionType = 0; //Dynamic Overworld Pals
+//EWRAM_DATA u16 sCurrentSpecialObjectPaletteTag = 0; //Dynamic Overworld Pals
 
-const u8 gReflectionEffectPaletteMap[16] = {
-    [PALSLOT_PLAYER]                 = PALSLOT_PLAYER_REFLECTION,
-    [PALSLOT_PLAYER_REFLECTION]      = PALSLOT_PLAYER_REFLECTION,
-    [PALSLOT_NPC_1]                  = PALSLOT_NPC_1_REFLECTION,
-    [PALSLOT_NPC_2]                  = PALSLOT_NPC_2_REFLECTION,
-    [PALSLOT_NPC_3]                  = PALSLOT_NPC_3_REFLECTION,
-    [PALSLOT_NPC_4]                  = PALSLOT_NPC_4_REFLECTION,
-    [PALSLOT_NPC_1_REFLECTION]       = PALSLOT_NPC_1_REFLECTION,
-    [PALSLOT_NPC_2_REFLECTION]       = PALSLOT_NPC_2_REFLECTION,
-    [PALSLOT_NPC_3_REFLECTION]       = PALSLOT_NPC_3_REFLECTION,
-    [PALSLOT_NPC_4_REFLECTION]       = PALSLOT_NPC_4_REFLECTION,
-    [PALSLOT_NPC_SPECIAL]            = PALSLOT_NPC_SPECIAL_REFLECTION,
-    [PALSLOT_NPC_SPECIAL_REFLECTION] = PALSLOT_NPC_SPECIAL_REFLECTION
-};
+//const u8 gReflectionEffectPaletteMap[16] = {
+    //[PALSLOT_PLAYER]                 = PALSLOT_PLAYER_REFLECTION,
+    //[PALSLOT_PLAYER_REFLECTION]      = PALSLOT_PLAYER_REFLECTION,
+    //[PALSLOT_NPC_1]                  = PALSLOT_NPC_1_REFLECTION,
+    //[PALSLOT_NPC_2]                  = PALSLOT_NPC_2_REFLECTION,
+    //[PALSLOT_NPC_3]                  = PALSLOT_NPC_3_REFLECTION,
+    //[PALSLOT_NPC_4]                  = PALSLOT_NPC_4_REFLECTION,
+    //[PALSLOT_NPC_1_REFLECTION]       = PALSLOT_NPC_1_REFLECTION,
+    //[PALSLOT_NPC_2_REFLECTION]       = PALSLOT_NPC_2_REFLECTION,
+    //[PALSLOT_NPC_3_REFLECTION]       = PALSLOT_NPC_3_REFLECTION,
+    //[PALSLOT_NPC_4_REFLECTION]       = PALSLOT_NPC_4_REFLECTION,
+    //[PALSLOT_NPC_SPECIAL]            = PALSLOT_NPC_SPECIAL_REFLECTION,
+    //[PALSLOT_NPC_SPECIAL_REFLECTION] = PALSLOT_NPC_SPECIAL_REFLECTION
+//}; //Dynamic Overworld Pals
 
 static const struct SpriteTemplate gCameraSpriteTemplate = {
     .tileTag = 0, 
@@ -468,6 +470,13 @@ static const u8 gInitialMovementTypeFacingDirections[MOVEMENT_TYPES_COUNT] = {
 #define OBJ_EVENT_PAL_TAG_RS_GROUDON                  0x1119
 #define OBJ_EVENT_PAL_TAG_RS_GROUDON_REFLECTION       0x111A
 #define OBJ_EVENT_PAL_TAG_RS_SUBMARINE_SHADOW         0x111B
+#define OBJ_EVENT_PAL_TAG_PLAYER_UNUSED               0x111C
+#define OBJ_EVENT_PAL_TAG_CLAIRE                      0x111D
+#define OBJ_EVENT_PAL_TAG_JANINE                      0x111E
+#define OBJ_EVENT_PAL_TAG_PRYCE                       0x111F
+#define OBJ_EVENT_PAL_TAG_HOOH                        0x1120
+#define OBJ_EVENT_PAL_TAG_RANGER                      0x1121
+#define OBJ_EVENT_PAL_TAG_VILLAIN                     0x1122
 #define OBJ_EVENT_PAL_TAG_NONE                        0x11FF
 
 #include "data/object_events/object_event_graphics_info_pointers.h"
@@ -497,9 +506,18 @@ static const struct SpritePalette sObjectEventSpritePalettes[] = {
     {gObjectEventPal_Meteorite,               OBJ_EVENT_PAL_TAG_METEORITE},
     {gObjectEventPal_SSAnne,                  OBJ_EVENT_PAL_TAG_SS_ANNE},
     {gObjectEventPal_Seagallop,               OBJ_EVENT_PAL_TAG_SEAGALLOP},
+    {gObjectEventPal_PlayerUnused,            OBJ_EVENT_PAL_TAG_PLAYER_UNUSED},
+    {gObjectEventPal_Claire,                   OBJ_EVENT_PAL_TAG_CLAIRE  },
+    {gObjectEventPal_Janine,                   OBJ_EVENT_PAL_TAG_JANINE  },
+    {gObjectEventPal_Pryce,                    OBJ_EVENT_PAL_TAG_PRYCE  },
+    {gObjectEventPal_Hooh,                    OBJ_EVENT_PAL_TAG_HOOH  },
+    {gObjectEventPal_Ranger,                    OBJ_EVENT_PAL_TAG_RANGER  },
+    {gObjectEventPal_Villain,                    OBJ_EVENT_PAL_TAG_VILLAIN  },
+    
     {},
 };
 
+/*
 static const u16 sPlayerReflectionPaletteTags[] = {
     OBJ_EVENT_PAL_TAG_PLAYER_RED_REFLECTION,
     OBJ_EVENT_PAL_TAG_PLAYER_RED_REFLECTION,
@@ -625,6 +643,7 @@ static const u16 sObjectPaletteTags0[] = {
     OBJ_EVENT_PAL_TAG_NPC_PINK_REFLECTION,
     OBJ_EVENT_PAL_TAG_NPC_GREEN_REFLECTION,
     OBJ_EVENT_PAL_TAG_NPC_WHITE_REFLECTION,
+    OBJ_EVENT_PAL_TAG_PLAYER_UNUSED,
 };
 
 static const u16 sObjectPaletteTags1[] = {
@@ -638,6 +657,7 @@ static const u16 sObjectPaletteTags1[] = {
     OBJ_EVENT_PAL_TAG_NPC_PINK_REFLECTION,
     OBJ_EVENT_PAL_TAG_NPC_GREEN_REFLECTION,
     OBJ_EVENT_PAL_TAG_NPC_WHITE_REFLECTION,
+    OBJ_EVENT_PAL_TAG_PLAYER_UNUSED,
 };
 
 static const u16 sObjectPaletteTags2[] = {
@@ -651,6 +671,7 @@ static const u16 sObjectPaletteTags2[] = {
     OBJ_EVENT_PAL_TAG_NPC_PINK_REFLECTION,
     OBJ_EVENT_PAL_TAG_NPC_GREEN_REFLECTION,
     OBJ_EVENT_PAL_TAG_NPC_WHITE_REFLECTION,
+    OBJ_EVENT_PAL_TAG_PLAYER_UNUSED,
 };
 
 static const u16 sObjectPaletteTags3[] = {
@@ -664,6 +685,7 @@ static const u16 sObjectPaletteTags3[] = {
     OBJ_EVENT_PAL_TAG_NPC_PINK_REFLECTION,
     OBJ_EVENT_PAL_TAG_NPC_GREEN_REFLECTION,
     OBJ_EVENT_PAL_TAG_NPC_WHITE_REFLECTION,
+    OBJ_EVENT_PAL_TAG_PLAYER_UNUSED,
 };
 
 static const u16 *const gObjectPaletteTagSets[] = {
@@ -672,6 +694,7 @@ static const u16 *const gObjectPaletteTagSets[] = {
     sObjectPaletteTags2,
     sObjectPaletteTags3,
 };
+*/ //Dynamic OverWorld Pals
 
 //#include "data/object_events/berry_tree_graphics_tables.h"
 #include "data/field_effects/field_effect_objects.h"
@@ -1530,12 +1553,16 @@ void RemoveObjectEventByLocalIdAndMap(u8 localId, u8 mapNum, u8 mapGroup)
     }
 }
 
-static void RemoveObjectEventInternal(struct ObjectEvent *objectEvent)
+static void RemoveObjectEventInternal(struct ObjectEvent *objectEvent) //Dynamic Overworld Pals
 {
+    u8 paletteNum;
+
     struct SpriteFrameImage image;
     image.size = GetObjectEventGraphicsInfo(objectEvent->graphicsId)->size;
     gSprites[objectEvent->spriteId].images = &image;
+    paletteNum = gSprites[objectEvent->spriteId].oam.paletteNum; //Dynamic Overworld Pals
     DestroySprite(&gSprites[objectEvent->spriteId]);
+    FieldEffectFreePaletteIfUnused(paletteNum); //Dynamic Overworld Pals
 }
 
 void Unref_RemoveAllObjectEventsExceptPlayer(void)
@@ -1563,16 +1590,20 @@ static u8 TrySetupObjectEventSprite(const struct ObjectEventTemplate *objectEven
 
     objectEvent = &gObjectEvents[objectEventId];
     graphicsInfo = GetObjectEventGraphicsInfo(objectEvent->graphicsId);
-    if (graphicsInfo->paletteSlot == PALSLOT_PLAYER)
-        LoadPlayerObjectReflectionPalette(graphicsInfo->paletteTag, graphicsInfo->paletteSlot);
-    else if (graphicsInfo->paletteSlot == PALSLOT_NPC_SPECIAL)
-        LoadSpecialObjectReflectionPalette(graphicsInfo->paletteTag, graphicsInfo->paletteSlot);
-
+    //if (graphicsInfo->paletteSlot == PALSLOT_PLAYER)
+        //LoadPlayerObjectReflectionPalette(graphicsInfo->paletteTag, graphicsInfo->paletteSlot);
+    //else if (graphicsInfo->paletteSlot == PALSLOT_NPC_SPECIAL)
+        //LoadSpecialObjectReflectionPalette(graphicsInfo->paletteTag, graphicsInfo->paletteSlot);
+    if (spriteTemplate->paletteTag != 0xFFFF) //Dynamic Overworld Pal
+    {
+        LoadObjectEventPalette(spriteTemplate->paletteTag);
+        UpdatePaletteGammaType(IndexOfSpritePaletteTag(spriteTemplate->paletteTag), GAMMA_ALT);
+    }
 
     if (objectEvent->movementType == MOVEMENT_TYPE_INVISIBLE)
         objectEvent->invisible = TRUE;
 
-    *(u16 *)&spriteTemplate->paletteTag = TAG_NONE;
+    //*(u16 *)&spriteTemplate->paletteTag = TAG_NONE; //Dynamic Overworld Pal
     spriteId = CreateSprite(spriteTemplate, 0, 0, 0);
     if (spriteId == MAX_SPRITES)
     {
@@ -1586,7 +1617,8 @@ static u8 TrySetupObjectEventSprite(const struct ObjectEventTemplate *objectEven
     sprite->centerToCornerVecY = -(graphicsInfo->height >> 1);
     sprite->x += 8;
     sprite->y += 16 + sprite->centerToCornerVecY;
-    sprite->oam.paletteNum = graphicsInfo->paletteSlot;
+    //sprite->oam.paletteNum = graphicsInfo->paletteSlot; //Dynamic Overworld Pal
+    sprite->oam.paletteNum = IndexOfSpritePaletteTag(spriteTemplate->paletteTag);
     sprite->coordOffsetEnabled = TRUE;
     sprite->data[0] = objectEventId;
     objectEvent->spriteId = spriteId;
@@ -1729,7 +1761,12 @@ u8 CreateVirtualObject(u8 graphicsId, u8 virtualObjId, s16 x, s16 y, u8 elevatio
 
     graphicsInfo = GetObjectEventGraphicsInfo(graphicsId);
     CopyObjectGraphicsInfoToSpriteTemplate(graphicsId, SpriteCB_VirtualObject, &spriteTemplate, &subspriteTables);
-    *(u16 *)&spriteTemplate.paletteTag = TAG_NONE;
+    //*(u16 *)&spriteTemplate.paletteTag = TAG_NONE; //Dynamic OverWorld Pals
+    if (spriteTemplate.paletteTag != 0xFFFF)
+    {
+        LoadObjectEventPalette(spriteTemplate.paletteTag);
+        UpdatePaletteGammaType(IndexOfSpritePaletteTag(spriteTemplate.paletteTag), GAMMA_ALT);
+    }
     x += MAP_OFFSET;
     y += MAP_OFFSET;
     SetSpritePosToOffsetMapCoords(&x, &y, 8, 16);
@@ -1740,13 +1777,14 @@ u8 CreateVirtualObject(u8 graphicsId, u8 virtualObjId, s16 x, s16 y, u8 elevatio
         sprite->centerToCornerVecX = -(graphicsInfo->width >> 1);
         sprite->centerToCornerVecY = -(graphicsInfo->height >> 1);
         sprite->y += sprite->centerToCornerVecY;
-        sprite->oam.paletteNum = graphicsInfo->paletteSlot;
+        //sprite->oam.paletteNum = graphicsInfo->paletteSlot;
+        sprite->oam.paletteNum = IndexOfSpritePaletteTag(spriteTemplate.paletteTag); //Dynamic OverWorld Pals
         sprite->coordOffsetEnabled = TRUE;
         sprite->sVirtualObjId = virtualObjId;
         sprite->sVirtualObjElev = elevation;
-        if (graphicsInfo->paletteSlot == PALSLOT_NPC_SPECIAL)
+        /*if (graphicsInfo->paletteSlot == PALSLOT_NPC_SPECIAL)
             LoadSpecialObjectReflectionPalette(graphicsInfo->paletteTag, graphicsInfo->paletteSlot);
-
+        */
         if (subspriteTables != NULL)
         {
             SetSubspriteTables(sprite, subspriteTables);
@@ -1777,11 +1815,11 @@ u8 CreateFameCheckerObject(u8 graphicsId, u8 localId, s16 x, s16 y)
         sprite = &gSprites[spriteId];
         sprite->centerToCornerVecY = -(graphicsInfo->height >> 1);
         sprite->y += sprite->centerToCornerVecY;
-        sprite->oam.paletteNum = graphicsInfo->paletteSlot;
+        //sprite->oam.paletteNum = graphicsInfo->paletteSlot;
+        sprite->oam.paletteNum = IndexOfSpritePaletteTag(spriteTemplate.paletteTag); //Dynamic OverWorld Pals
         sprite->data[0] = localId;
-        if (graphicsInfo->paletteSlot == PALSLOT_NPC_SPECIAL)
-            LoadSpecialObjectReflectionPalette(graphicsInfo->paletteTag, graphicsInfo->paletteSlot);
-
+        //if (graphicsInfo->paletteSlot == PALSLOT_NPC_SPECIAL)
+            //LoadSpecialObjectReflectionPalette(graphicsInfo->paletteTag, graphicsInfo->paletteSlot);
         if (subspriteTables != NULL)
         {
             SetSubspriteTables(sprite, subspriteTables);
@@ -1896,14 +1934,19 @@ static void SpawnObjectEventOnReturnToField(u8 objectEventId, s16 x, s16 y)
     CopyObjectGraphicsInfoToSpriteTemplate_WithMovementType(objectEvent->graphicsId, objectEvent->movementType, &spriteTemplate, &subspriteTables);
     spriteTemplate.images = &spriteFrameImage;
 
-    *(u16 *)&spriteTemplate.paletteTag = TAG_NONE;
+    /**(u16 *)&spriteTemplate.paletteTag = TAG_NONE; //Dynamic Overworld Pals
     if (graphicsInfo->paletteSlot == PALSLOT_PLAYER)
         LoadPlayerObjectReflectionPalette(graphicsInfo->paletteTag, graphicsInfo->paletteSlot);
 
     if (graphicsInfo->paletteSlot >= PALSLOT_NPC_SPECIAL)
         LoadSpecialObjectReflectionPalette(graphicsInfo->paletteTag, graphicsInfo->paletteSlot);
 
-    *(u16 *)&spriteTemplate.paletteTag = TAG_NONE;
+    *(u16 *)&spriteTemplate.paletteTag = TAG_NONE;*/
+    if (spriteTemplate.paletteTag != 0xFFFF)
+    {
+        LoadObjectEventPalette(spriteTemplate.paletteTag);
+        UpdatePaletteGammaType(IndexOfSpritePaletteTag(spriteTemplate.paletteTag), GAMMA_ALT);
+    }
     spriteId = CreateSprite(&spriteTemplate, 0, 0, 0);
     if (spriteId != MAX_SPRITES)
     {
@@ -1922,7 +1965,8 @@ static void SpawnObjectEventOnReturnToField(u8 objectEventId, s16 x, s16 y)
         if (subspriteTables != NULL)
             SetSubspriteTables(sprite, subspriteTables);
 
-        sprite->oam.paletteNum = graphicsInfo->paletteSlot;
+        //sprite->oam.paletteNum = graphicsInfo->paletteSlot; //Dynamic Overworld Pal
+        sprite->oam.paletteNum = IndexOfSpritePaletteTag(spriteTemplate.paletteTag);
         sprite->coordOffsetEnabled = TRUE;
         sprite->data[0] = objectEventId;
         objectEvent->spriteId = spriteId;
@@ -1964,12 +2008,17 @@ void ObjectEventSetGraphicsId(struct ObjectEvent *objectEvent, u8 graphicsId)
 
     graphicsInfo = GetObjectEventGraphicsInfo(graphicsId);
     sprite = &gSprites[objectEvent->spriteId];
-    if (graphicsInfo->paletteSlot == PALSLOT_PLAYER)
+    /*if (graphicsInfo->paletteSlot == PALSLOT_PLAYER)
         PatchObjectPalette(graphicsInfo->paletteTag, graphicsInfo->paletteSlot);
 
     if (graphicsInfo->paletteSlot == PALSLOT_NPC_SPECIAL)
         LoadSpecialObjectReflectionPalette(graphicsInfo->paletteTag, graphicsInfo->paletteSlot);
-    
+    */ //Dynamic Overworld Pal
+    if (graphicsInfo->paletteTag != 0xFFFF)
+    {
+        LoadObjectEventPalette(graphicsInfo->paletteTag);
+        UpdatePaletteGammaType(IndexOfSpritePaletteTag(graphicsInfo->paletteTag), GAMMA_ALT);
+    }
     var = sprite->images->size / TILE_SIZE_4BPP;
     if (!sprite->usingSheet)
     {
@@ -1980,7 +2029,8 @@ void ObjectEventSetGraphicsId(struct ObjectEvent *objectEvent, u8 graphicsId)
     sprite->images = graphicsInfo->images;
     sprite->anims = graphicsInfo->anims;
     sprite->subspriteTables = graphicsInfo->subspriteTables;
-    sprite->oam.paletteNum = graphicsInfo->paletteSlot;
+    //sprite->oam.paletteNum = graphicsInfo->paletteSlot; //Dynamic Overworld Pal
+    sprite->oam.paletteNum = IndexOfSpritePaletteTag(graphicsInfo->paletteTag);
     if (!sprite->usingSheet)
     {
         s32 var2;
@@ -2136,7 +2186,8 @@ void FreeAndReserveObjectSpritePalettes(void)
     gReservedSpritePaletteCount = OBJ_PALSLOT_COUNT;
 }
 
-static void LoadObjectEventPalette(u16 paletteTag)
+//static void LoadObjectEventPalette(u16 paletteTag)
+void LoadObjectEventPalette(u16 paletteTag)
 {
     u16 i = FindObjectEventPaletteIndexByTag(paletteTag);
 
@@ -2203,7 +2254,8 @@ static u8 FindObjectEventPaletteIndexByTag(u16 tag)
     return 0xFF;
 }
 
-void LoadPlayerObjectReflectionPalette(u16 tag, u8 slot)
+//Dynamic Overworld Pals
+/*void LoadPlayerObjectReflectionPalette(u16 tag, u8 slot)
 {
     u8 i;
 
@@ -2233,12 +2285,13 @@ void LoadSpecialObjectReflectionPalette(u16 tag, u8 slot)
         }
     }
 }
+*/
 
 // Unused
-static u8 GetReflectionEffectPaletteSlot(u8 slot)
-{
-    return gReflectionEffectPaletteMap[slot];
-}
+//static u8 GetReflectionEffectPaletteSlot(u8 slot)
+//{
+    //return gReflectionEffectPaletteMap[slot];
+//}
 
 // Unused
 void IncrementObjectEventCoords(struct ObjectEvent *objectEvent, s16 x, s16 y)
@@ -2453,12 +2506,7 @@ u8 CameraObjectGetFollowedObjectId(void)
 
 void CameraObjectReset2(void)
 {
-    struct Sprite *cameraObject = FindCameraObject();
-#ifdef UBFIX
-    if (cameraObject == NULL)
-        return;
-#endif
-    cameraObject->data[1] = 2;
+    FindCameraObject()->data[1] = 2;
 }
 
 u8 CopySprite(struct Sprite *sprite, s16 x, s16 y, u8 subpriority)
@@ -2657,8 +2705,8 @@ void TryOverrideObjectEventTemplateCoords(u8 localId, u8 mapNum, u8 mapGroup)
     if (!TryGetObjectEventIdByLocalIdAndMap(localId, mapNum, mapGroup, &objectEventId))
         OverrideTemplateCoordsForObjectEvent(&gObjectEvents[objectEventId]);
 }
-
-void InitObjectEventPalettes(u8 palSlot)
+//Dynamic Overworld Pals
+/*void InitObjectEventPalettes(u8 palSlot)
 {
     FreeAndReserveObjectSpritePalettes();
     sCurrentSpecialObjectPaletteTag = OBJ_EVENT_PAL_TAG_NONE;
@@ -2691,7 +2739,7 @@ u16 GetObjectPaletteTag(u8 palSlot)
     }
     return OBJ_EVENT_PAL_TAG_NONE;
 }
-
+*/
 movement_type_empty_callback(MovementType_None)
 movement_type_def(MovementType_WanderAround, gMovementTypeFuncs_WanderAround)
 movement_type_def(MovementType_WanderAroundSlower, gMovementTypeFuncs_WanderAroundSlower)

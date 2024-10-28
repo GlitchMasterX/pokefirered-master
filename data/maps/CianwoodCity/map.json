@@ -1,0 +1,83 @@
+{
+  "id": "MAP_CIANWOOD_CITY",
+  "name": "CianwoodCity",
+  "layout": "LAYOUT_CIANWOOD_CITY",
+  "music": "MUS_DUMMY",
+  "region_map_section": "MAPSEC_LITTLEROOT_TOWN",
+  "requires_flash": false,
+  "weather": "WEATHER_NONE",
+  "map_type": "MAP_TYPE_NONE",
+  "allow_cycling": true,
+  "allow_escaping": false,
+  "allow_running": true,
+  "show_map_name": true,
+  "floor_number": 0,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": [
+    {
+      "map": "MAP_ROUTE40",
+      "offset": -36,
+      "direction": "right"
+    }
+  ],
+  "object_events": [
+
+  ],
+  "warp_events": [
+    {
+      "x": 20,
+      "y": 38,
+      "elevation": 0,
+      "dest_map": "MAP_CIANWOOD_HOUSE",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 6,
+      "y": 11,
+      "elevation": 0,
+      "dest_map": "MAP_CIANWOOD_HOUSE2",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 17,
+      "y": 32,
+      "elevation": 0,
+      "dest_map": "MAP_CIANWOOD_HOUSE1",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 12,
+      "y": 25,
+      "elevation": 0,
+      "dest_map": "MAP_CIZNWOOD_HOUSE3",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 16,
+      "y": 44,
+      "elevation": 0,
+      "dest_map": "MAP_CIAN",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 27,
+      "y": 39,
+      "elevation": 0,
+      "dest_map": "MAP_NEW_MAP4",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 8,
+      "y": 39,
+      "elevation": 0,
+      "dest_map": "MAP_CIANGYM",
+      "dest_warp_id": "0"
+    }
+  ],
+  "coord_events": [
+
+  ],
+  "bg_events": [
+
+  ]
+}

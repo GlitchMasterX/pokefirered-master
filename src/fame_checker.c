@@ -1197,7 +1197,8 @@ static void FCSetup_ResetTasksAndSpriteResources(void)
     ResetSpriteData();
     ResetAllPicSprites();
     ResetPaletteFade();
-    InitObjectEventPalettes(0);
+    //InitObjectEventPalettes(0);
+    FreeAllSpritePalettes(); //Dynamic Overworld Pals
     gReservedSpritePaletteCount = 7;
 
 }

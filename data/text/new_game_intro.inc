@@ -195,7 +195,7 @@ gOakSpeech_Text_WelcomeToTheWorld::
     .string "as the POKéMON PROFESSOR.\p$"
 
 gOakSpeech_Text_ThisWorld::
-    .string "This world…$"
+    .string "Fuck You…$"
 
 gOakSpeech_Text_IsInhabitedFarAndWide::
     .string "…is inhabited far and wide by\n"

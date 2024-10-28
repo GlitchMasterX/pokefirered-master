@@ -1,0 +1,90 @@
+{
+  "id": "MAP_BLACKTHORN_CITY",
+  "name": "BlackthornCity",
+  "layout": "LAYOUT_BLACKTHORN_CITY",
+  "music": "MUS_DUMMY",
+  "region_map_section": "MAPSEC_LITTLEROOT_TOWN",
+  "requires_flash": false,
+  "weather": "WEATHER_NONE",
+  "map_type": "MAP_TYPE_NONE",
+  "allow_cycling": true,
+  "allow_escaping": false,
+  "allow_running": true,
+  "show_map_name": true,
+  "floor_number": 0,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": [
+    {
+      "map": "MAP_ROUTE45",
+      "offset": 0,
+      "direction": "down"
+    }
+  ],
+  "object_events": [
+
+  ],
+  "warp_events": [
+    {
+      "x": 36,
+      "y": 10,
+      "elevation": 0,
+      "dest_map": "MAP_ICE_PATH",
+      "dest_warp_id": "3"
+    },
+    {
+      "x": 29,
+      "y": 25,
+      "elevation": 0,
+      "dest_map": "MAP_BLACK_HOUSE",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 19,
+      "y": 12,
+      "elevation": 0,
+      "dest_map": "MAP_BLACKGYM",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 13,
+      "y": 21,
+      "elevation": 0,
+      "dest_map": "MAP_BLACK_HOUSE1",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 7,
+      "y": 32,
+      "elevation": 0,
+      "dest_map": "MAP_BLAC_HOUSE2",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 21,
+      "y": 29,
+      "elevation": 0,
+      "dest_map": "MAP_BLACKPOKE",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 17,
+      "y": 29,
+      "elevation": 0,
+      "dest_map": "MAP_BLACKMART",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 20,
+      "y": 1,
+      "elevation": 0,
+      "dest_map": "MAP_DRAGONS_DEN",
+      "dest_warp_id": "0"
+    }
+  ],
+  "coord_events": [
+
+  ],
+  "bg_events": [
+
+  ]
+}

@@ -388,7 +388,13 @@ gCryTable::
 	cry Cry_Jirachi
 	cry Cry_Deoxys
 	cry Cry_Chimecho
-
+	cry Cry_Ryujin
+	cry Cry_Articuno_o
+	cry Cry_Moltres_o
+	cry Cry_Zapdos_o
+	cry Cry_Togekiss
+	cry Cry_Honchkrow
+	cry Cry_Weavile
 	.align 2
 gCryTable_Reverse::
 	cry_reverse Cry_Bulbasaur
@@ -779,3 +785,10 @@ gCryTable_Reverse::
 	cry_reverse Cry_Jirachi
 	cry_reverse Cry_Deoxys
 	cry_reverse Cry_Chimecho
+    cry_reverse Cry_Ryujin
+	cry_reverse Cry_Articuno_o
+	cry_reverse Cry_Moltres_o
+	cry_reverse Cry_Zapdos_o
+	cry_reverse Cry_Togekiss
+	cry_reverse Cry_Honchkrow
+	cry_reverse Cry_Weavile

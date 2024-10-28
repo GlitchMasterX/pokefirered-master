@@ -49,7 +49,30 @@
     "TradeCenter",
     "RecordCorner",
     "BattleColosseum_4P",
-    "UnionRoom"
+    "UnionRoom",
+    "CherrygroveCity",
+    "Route30",
+    "Route34",
+    "Route42",
+    "Route44",
+    "CianwoodCity",
+    "OlivineCity",
+    "NewMap1",
+    "MrPokemon",
+    "Route301",
+    "Route311",
+    "DarkCave",
+    "DarkCave1",
+    "Route352",
+    "Olivineug",
+    "Olivineport",
+    "BlackHouse",
+    "Blackgym",
+    "Blackgym2",
+    "BlackHouse1",
+    "BlacHouse2",
+    "Ruins41",
+    "SecretPassage"
   ],
   "gMapGroup_Dungeons": [
     "ViridianForest",
@@ -174,7 +197,12 @@
     "SixIsland_DottedHole_B4F",
     "SixIsland_DottedHole_SapphireRoom",
     "SixIsland_PatternBush",
-    "SixIsland_AlteringCave"
+    "SixIsland_AlteringCave",
+    "IcePath",
+    "IcePath2",
+    "NewMap3",
+    "IcePath3",
+    "IcePath4"
   ],
   "gMapGroup_SpecialArea": [
     "NavelRock_Exterior",
@@ -236,7 +264,10 @@
     "BirthIsland_Exterior",
     "OneIsland_KindleRoad_EmberSpa",
     "BirthIsland_Harbor",
-    "NavelRock_Harbor"
+    "NavelRock_Harbor",
+    "NationalPark",
+    "Route361",
+    "RuinsofAlph"
   ],
   "gMapGroup_TownsAndRoutes": [
     "PalletTown",
@@ -304,13 +335,45 @@
     "SevenIsland_TrainerTower",
     "SevenIsland_SevaultCanyon_Entrance",
     "SevenIsland_SevaultCanyon",
-    "SevenIsland_TanobyRuins"
+    "SevenIsland_TanobyRuins",
+    "NewBarkTown",
+    "Route29",
+    "Route31",
+    "VioletCity",
+    "Route32",
+    "Route33",
+    "Route35",
+    "Route36",
+    "Route37",
+    "Route38",
+    "Route39",
+    "Route40",
+    "Route43",
+    "EcruteakCity",
+    "GoldenrodCity",
+    "BlackthornCity",
+    "Route46",
+    "Route45",
+    "AzaleaTown",
+    "Ilex1",
+    "MahoganyTown",
+    "Mahoganygym",
+    "Route26",
+    "TohjoFalls"
   ],
   "gMapGroup_IndoorPallet": [
     "PalletTown_PlayersHouse_1F",
     "PalletTown_PlayersHouse_2F",
     "PalletTown_RivalsHouse",
-    "PalletTown_ProfessorOaksLab"
+    "PalletTown_ProfessorOaksLab",
+    "House1",
+    "House11",
+    "ElmLab",
+    "House2",
+    "ElmHouse",
+    "KrisHouse",
+    "Kris1",
+    "Route029"
   ],
   "gMapGroup_IndoorViridian": [
     "ViridianCity_House",
@@ -318,7 +381,12 @@
     "ViridianCity_School",
     "ViridianCity_Mart",
     "ViridianCity_PokemonCenter_1F",
-    "ViridianCity_PokemonCenter_2F"
+    "ViridianCity_PokemonCenter_2F",
+    "House3",
+    "House31",
+    "House32",
+    "Cherrypoke",
+    "Cherrymart"
   ],
   "gMapGroup_IndoorPewter": [
     "PewterCity_Museum_1F",
@@ -328,7 +396,15 @@
     "PewterCity_House1",
     "PewterCity_PokemonCenter_1F",
     "PewterCity_PokemonCenter_2F",
-    "PewterCity_House2"
+    "PewterCity_House2",
+    "SproutTower",
+    "SproutTower2",
+    "School",
+    "VioletPoke",
+    "VioletMart",
+    "NewMap2",
+    "VioletHouse1",
+    "VioletHouse2"
   ],
   "gMapGroup_IndoorCerulean": [
     "CeruleanCity_House1",
@@ -340,7 +416,9 @@
     "CeruleanCity_BikeShop",
     "CeruleanCity_Mart",
     "CeruleanCity_House4",
-    "CeruleanCity_House5"
+    "CeruleanCity_House5",
+    "Route362",
+    "Route351"
   ],
   "gMapGroup_IndoorLavender": [
     "LavenderTown_PokemonCenter_1F",
@@ -348,7 +426,16 @@
     "LavenderTown_VolunteerPokemonHouse",
     "LavenderTown_House1",
     "LavenderTown_House2",
-    "LavenderTown_Mart"
+    "LavenderTown_Mart",
+    "DayCare",
+    "IlexForest",
+    "Route341",
+    "Azaleapoke",
+    "Azaleamart",
+    "AzaleaHouse",
+    "AzaleaGym",
+    "AzaleaHouse2",
+    "Slowpokewell"
   ],
   "gMapGroup_IndoorVermilion": [
     "VermilionCity_House1",
@@ -358,7 +445,12 @@
     "VermilionCity_House2",
     "VermilionCity_Mart",
     "VermilionCity_Gym",
-    "VermilionCity_House3"
+    "VermilionCity_House3",
+    "Slowpokewell2",
+    "UnionCave",
+    "Route32poke",
+    "UnionCave1",
+    "UnionCave2"
   ],
   "gMapGroup_IndoorCeladon": [
     "CeladonCity_DepartmentStore_1F",
@@ -392,7 +484,25 @@
     "FuchsiaCity_PokemonCenter_2F",
     "FuchsiaCity_WardensHouse",
     "FuchsiaCity_House2",
-    "FuchsiaCity_House3"
+    "FuchsiaCity_House3",
+    "Ecruteakgym",
+    "Ecruteakpoke",
+    "Ecruteakmart",
+    "Gateway",
+    "Gateway2",
+    "Belltower",
+    "Belltower2",
+    "Top",
+    "DanceHouse",
+    "EcruteakHouse",
+    "EcruteakHouse1",
+    "BurnedTower",
+    "Ecruteak1",
+    "Ecruteak2",
+    "MtMortar",
+    "MtMortar1",
+    "MtMortar2",
+    "MtMortar3"
   ],
   "gMapGroup_IndoorCinnabar": [
     "CinnabarIsland_Gym",
@@ -402,11 +512,24 @@
     "CinnabarIsland_PokemonLab_ExperimentRoom",
     "CinnabarIsland_PokemonCenter_1F",
     "CinnabarIsland_PokemonCenter_2F",
-    "CinnabarIsland_Mart"
+    "CinnabarIsland_Mart",
+    "Mahoganypoke",
+    "Mahoganyhouse",
+    "Mahogany1",
+    "Mahogany",
+    "Route431"
   ],
   "gMapGroup_IndoorIndigoPlateau": [
     "IndigoPlateau_PokemonCenter_1F",
-    "IndigoPlateau_PokemonCenter_2F"
+    "IndigoPlateau_PokemonCenter_2F",
+    "OlivineHouse",
+    "OlivineHouse1",
+    "OlivineHouse2",
+    "Olivinerest",
+    "Olivinepoke",
+    "Olivinemart",
+    "Olivinegym",
+    "LightHouse"
   ],
   "gMapGroup_IndoorSaffron": [
     "SaffronCity_CopycatsHouse_1F",
@@ -424,7 +547,11 @@
     "Route2_ViridianForest_SouthEntrance",
     "Route2_House",
     "Route2_EastBuilding",
-    "Route2_ViridianForest_NorthEntrance"
+    "Route2_ViridianForest_NorthEntrance",
+    "Blackpoke",
+    "Blackmart",
+    "DragonsDen",
+    "Den2"
   ],
   "gMapGroup_IndoorRoute4": [
     "Route4_PokemonCenter_1F",
@@ -436,7 +563,8 @@
   ],
   "gMapGroup_IndoorRoute6": [
     "Route6_NorthEntrance",
-    "Route6_UnusedHouse"
+    "Route6_UnusedHouse",
+    "Ruinwhirl"
   ],
   "gMapGroup_IndoorRoute7": [
     "Route7_EastEntrance"
@@ -471,10 +599,17 @@
     "Route18_EastEntrance_2F"
   ],
   "gMapGroup_IndoorRoute19": [
-    "Route19_UnusedHouse"
+    "Route19_UnusedHouse",
+    "LakeofRage",
+    "LakeHouse1",
+    "Lake2"
   ],
   "gMapGroup_IndoorRoute22": [
-    "Route22_NorthEntrance"
+    "Route22_NorthEntrance",
+    "Route271",
+    "Route261",
+    "Route262",
+    "Route263"
   ],
   "gMapGroup_IndoorRoute23": [
     "Route23_UnusedHouse"
@@ -540,84 +675,48 @@
     "SixIsland_Mart"
   ],
   "gMapGroup_IndoorThreeIslandRoute": [
-    "ThreeIsland_Harbor"
+    "ThreeIsland_Harbor",
+    "Route321"
   ],
   "gMapGroup_IndoorFiveIslandRoute": [
-    "FiveIsland_ResortGorgeous_House"
+    "FiveIsland_ResortGorgeous_House",
+    "Route28",
+    "Route281",
+    "MtSilver",
+    "MtSilverpoke",
+    "MtSilver1",
+    "MtSilver2",
+    "MtSilver3",
+    "SecretPassage1",
+    "SecretPassage2",
+    "SecretPassage3",
+    "SecretPassage4",
+    "SecretPassage5",
+    "SecretPassage6"
   ],
   "gMapGroup_IndoorTwoIslandRoute": [
-    "TwoIsland_CapeBrink_House"
+    "TwoIsland_CapeBrink_House",
+    "CianwoodHouse",
+    "CianwoodHouse1",
+    "CianwoodHouse2",
+    "CiznwoodHouse3",
+    "NewMap4",
+    "cian",
+    "Ciangym"
   ],
   "gMapGroup_IndoorSixIslandRoute": [
     "SixIsland_WaterPath_House1",
     "SixIsland_WaterPath_House2"
   ],
   "gMapGroup_IndoorSevenIslandRoute": [
-    "SevenIsland_SevaultCanyon_House"
-  ],
-  "connections_include_order": [
-    "PalletTown",
-    "ViridianCity",
-    "PewterCity",
-    "CeruleanCity",
-    "LavenderTown",
-    "VermilionCity",
-    "CeladonCity",
-    "FuchsiaCity",
-    "CinnabarIsland",
-    "IndigoPlateau_Exterior",
-    "SaffronCity",
-    "SaffronCity_Connection",
-    "OneIsland",
-    "TwoIsland",
-    "ThreeIsland",
-    "FiveIsland",
-    "SevenIsland",
-    "SixIsland",
-    "Route1",
-    "Route2",
-    "Route3",
-    "Route4",
-    "Route5",
-    "Route6",
-    "Route7",
-    "Route8",
-    "Route9",
-    "Route10",
-    "Route11",
-    "Route12",
-    "Route13",
-    "Route14",
-    "Route15",
-    "Route16",
-    "Route17",
-    "Route18",
-    "Route19",
-    "Route20",
-    "Route21_North",
-    "Route21_South",
-    "Route22",
-    "Route23",
-    "Route24",
-    "Route25",
-    "OneIsland_KindleRoad",
-    "OneIsland_TreasureBeach",
-    "TwoIsland_CapeBrink",
-    "ThreeIsland_BondBridge",
-    "ThreeIsland_Port",
-    "Prototype_SeviiIsle_6",
-    "Prototype_SeviiIsle_7",
-    "FiveIsland_ResortGorgeous",
-    "FiveIsland_WaterLabyrinth",
-    "FiveIsland_Meadow",
-    "FiveIsland_MemorialPillar",
-    "SixIsland_OutcastIsland",
-    "SixIsland_GreenPath",
-    "SixIsland_WaterPath",
-    "SixIsland_RuinValley",
-    "SevenIsland_TrainerTower",
-    "SevenIsland_SevaultCanyon_Entrance",
-    "SevenIsland_SevaultCanyon",
-    "SevenIsland_TanobyRuins"
+    "SevenIsland_SevaultCanyon_House",
+    "Ruins1",
+    "Ruins2",
+    "Ruins3",
+    "Ruins4",
+    "Ruins5",
+    "RuinsHouse",
+    "unused",
+    "Route27"
   ]
 }
